@@ -5,13 +5,20 @@ const GameService = {
   postSession() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({words:[[b,,,,g], [y,,,], [o,,], [,,,,,,r]]})
-      }, 150)
-    })
+        resolve({
+          words: [
+            [b, , , , g],
+            [y, , ,],
+            [o, ,],
+            [, , , , , , r]
+          ]
+        });
+      }, 150);
+    });
   },
 
   /**
-   * example response 
+   * example response
    * {
    *   "winners": [],
    *   "sessionActive": true,
@@ -25,16 +32,16 @@ const GameService = {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
-          "winners": [],
-          "sessionActive": true,
-          "leaderboard": [{"blue monkey": 12}],
-          "roundNumber": 3,
-          "number": "+18004005000",
-          "lastWinner": "Winner Alias"
-        })
-      }, 150)
-    })
+          winners: [],
+          sessionActive: true,
+          leaderboard: [{ "blue monkey": 12 }],
+          roundNumber: 3,
+          number: "+18004005000",
+          lastWinner: "Winner Alias"
+        });
+      }, 150);
+    });
   }
-}
+};
 
 export default GameService;
