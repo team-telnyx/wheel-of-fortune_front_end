@@ -20,55 +20,71 @@ const ActiveSession = ({ session, meta }) => {
   }
 
   return (
-    <article className={css.wrapper}>
-      <p className={css.word}>
-        {R.times(
-          R.always(
-            <span className={classNames(css.letter, css.letterPlaceholder)} />
-          ),
-          CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
-        )}
-      </p>
+    <div className={css.wrapper}>
+      <article className={css.words}>
+        <p className={css.word}>
+          {R.times(
+            R.always(
+              <span className={classNames(css.letter, css.letterPlaceholder)} />
+            ),
+            CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
+          )}
+        </p>
 
-      {R.map(
-        word => (
-          <p className={css.word}>
-            <span className={classNames(css.letter, css.letterPlaceholder)} />
-            {R.map(
-              letter => (
-                <span
-                  className={classNames(css.letter, {
-                    [css.letterBlank]: letter === undefined,
-                    [css.letterFilled]: letter !== undefined
-                  })}
-                >
-                  {letter === undefined ? null : letter}
-                </span>
-              ),
-              word
-            )}
-            {R.times(
-              R.always(
-                <span
-                  className={classNames(css.letter, css.letterPlaceholder)}
-                />
-              ),
-              CHAR_PADDING + MAX_CHAR_COUNT - word.length
-            )}
-          </p>
-        ),
-        session.words
-      )}
-
-      <p className={css.word}>
-        {R.times(
-          R.always(
-            <span className={classNames(css.letter, css.letterPlaceholder)} />
+        {R.map(
+          word => (
+            <p className={css.word}>
+              <span className={classNames(css.letter, css.letterPlaceholder)} />
+              {R.map(
+                letter => (
+                  <span
+                    className={classNames(css.letter, {
+                      [css.letterBlank]: letter === undefined,
+                      [css.letterFilled]: letter !== undefined
+                    })}
+                  >
+                    {letter === undefined ? null : letter}
+                  </span>
+                ),
+                word
+              )}
+              {R.times(
+                R.always(
+                  <span
+                    className={classNames(css.letter, css.letterPlaceholder)}
+                  />
+                ),
+                CHAR_PADDING + MAX_CHAR_COUNT - word.length
+              )}
+            </p>
           ),
-          CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
+          session.words
         )}
-      </p>
-    </article>
+
+        <p className={css.word}>
+          {R.times(
+            R.always(
+              <span className={classNames(css.letter, css.letterPlaceholder)} />
+            ),
+            CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
+          )}
+        </p>
+      </article>
+
+      <section className={css.winnersWrapper}>
+        <ol className={css.winners}>
+          {meta.winners &&
+            R.map(
+              winner => (
+                <li key={winner} className={css.winner}>
+                  {winner}
+                </li>
+              ),
+              meta.winners
+            )}
+        </ol>
+      </section>
+    </div>
   );
 };
 

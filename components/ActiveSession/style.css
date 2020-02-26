@@ -1,4 +1,4 @@
-.wrapper {
+.words {
   display: grid;
   grid-template-columns: repeat(14, 60px);
   gap: 5px;
@@ -25,4 +25,13 @@
 
 .letterPlaceholder {
   background: green;
+}
+
+.winners {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-auto-columns: 200px;
+  grid-auto-flow: column;
+
+  margin: 0;
 }

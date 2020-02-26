@@ -32,7 +32,19 @@ const GameService = {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
-          winners: [],
+          winners: [
+            "abcxyz",
+            "badal",
+            "hugo",
+            "enzo",
+            "gero",
+            "vladi",
+            "sua",
+            "eoghan",
+            "tony",
+            "steele",
+            "bratschi"
+          ],
           sessionActive: true,
           leaderboard: [{ "blue monkey": 12 }],
           roundNumber: 3,
