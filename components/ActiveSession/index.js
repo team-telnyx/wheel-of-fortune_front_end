@@ -1,4 +1,6 @@
 import React from "react";
+import css from "./style.css";
+import classNames from "classnames";
 
 /* [
      ["b", undefined, undefined, "n", undefined],
@@ -7,7 +9,76 @@ import React from "react";
      [undefined, undefined, undefined, undefined, undefined, undefined]
    ] */
 const ActiveSession = ({ words }) => {
-  return <pre>{JSON.stringify(words, null, 2)}</pre>;
+  return (
+    <article className={css.wrapper}>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterFilled)}>B</span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterFilled)}>N</span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterFilled)}>O</span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterFilled)}>N</span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterFilled)}>R</span>
+        <span className={classNames(css.letter, css.letterFilled)}>R</span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterBlank)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+      <p className={css.word}>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+      </p>
+    </article>
+  );
 };
 
 const renderPuzzle = words => {

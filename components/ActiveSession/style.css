@@ -1,0 +1,27 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(9, 70px);
+  gap: 20px;
+}
+
+.word {
+  display: contents;
+}
+
+.letter {
+  display: flex;
+  height: 95px;
+  width: 70px;
+  font-size: 50px;
+}
+
+.letterBlank,
+.letterFilled {
+  background: lightgray;
+  align-items: center;
+  justify-content: center;
+}
+
+.letterPlaceholder {
+  background: green;
+}
