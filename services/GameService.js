@@ -1,20 +1,31 @@
+import axios from "axios";
+
 const GameService = {
   /**
    * example response {words: [[b,r,i,n,g], [y,o,u,r], [o,w,n], [c,a,r,r,i,e,r]]}
    */
+  // postSession() {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve({
+  //         words: [
+  //           ["b", undefined, undefined, "n", undefined],
+  //           [undefined, "o", undefined, undefined],
+  //           [undefined, undefined, undefined],
+  //           [undefined, undefined, undefined, undefined, undefined, undefined]
+  //         ]
+  //       });
+  //     }, 150);
+  //   });
+  // },
+
   postSession() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          words: [
-            ["b", undefined, undefined, "n", undefined],
-            [undefined, "o", undefined, undefined],
-            [undefined, undefined, undefined],
-            [undefined, undefined, undefined, undefined, undefined, undefined]
-          ]
-        });
-      }, 150);
-    });
+    return axios.post("https://ef3df964.ngrok.io/data/letter").then(
+      response =>
+        console.log(response) || {
+          words: response.data.phrase
+        }
+    );
   },
 
   /**

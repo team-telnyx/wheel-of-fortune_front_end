@@ -2,6 +2,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.textInfoHeading {
+  font-family: 'Bungee', sans-serif;
+  color: rgba(0,0,0,0.7);
+}
+
+.textInfoHeading strong {
+  color: black;
+  text-decoration: underline;
+}
+
 .words {
   display: grid;
   grid-template-columns: repeat(14, 60px);

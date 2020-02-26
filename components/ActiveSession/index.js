@@ -15,12 +15,19 @@ const CHAR_PADDING = 1;
      [undefined, undefined, undefined, undefined, undefined, undefined]
    ] */
 const ActiveSession = ({ session, meta }) => {
+  console.log(session);
   if (!session) {
     return <div />;
   }
 
   return (
     <div className={css.wrapper}>
+      <header className={css.header}>
+        <h1 className={css.textInfoHeading}>
+          Text <strong>{meta.number}</strong> to play!
+        </h1>
+      </header>
+
       <article className={css.words}>
         <p className={css.word}>
           {R.times(
@@ -39,11 +46,11 @@ const ActiveSession = ({ session, meta }) => {
                 letter => (
                   <span
                     className={classNames(css.letter, {
-                      [css.letterBlank]: letter === undefined,
-                      [css.letterFilled]: letter !== undefined
+                      [css.letterBlank]: letter === "-",
+                      [css.letterFilled]: letter !== "-"
                     })}
                   >
-                    {letter === undefined ? null : letter}
+                    {letter === "-" ? null : letter}
                   </span>
                 ),
                 word
