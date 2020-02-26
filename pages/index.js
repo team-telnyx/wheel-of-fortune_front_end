@@ -65,6 +65,10 @@ const Home = ({ words, resp }) => {
     <div className="container">
       <Head>
         <title>Wheel of Fortune</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Bungee|Roboto&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <main>
         {gameState.meta.sessionActive && (
