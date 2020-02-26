@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSetState } from "react-hanger";
 import css from "./style.css";
 import classNames from "classnames";
 import * as R from "ramda";
+
+import GameService from "../../services/GameService";
 
 const MAX_CHAR_COUNT = 12;
 const CHAR_PADDING = 1;
@@ -12,7 +15,32 @@ const CHAR_PADDING = 1;
      [undefined, undefined, undefined],
      [undefined, undefined, undefined, undefined, undefined, undefined]
    ] */
-const ActiveSession = ({ words }) => {
+const ActiveSession = () => {
+  const { state, setState } = useSetState({});
+
+  function fetchSession() {
+    console.log("fetchSession");
+    return GameService.postSession().then(session => {
+      setState({ session });
+    });
+  }
+
+  useEffect(() => {
+    fetchSession();
+
+    const sessionInterval = setInterval(() => {
+      fetchSession();
+    }, 5000);
+
+    return () => {
+      clearInterval(sessionInterval);
+    };
+  }, []);
+
+  if (!state.session) {
+    return <div />;
+  }
+
   return (
     <article className={css.wrapper}>
       <p className={css.word}>
@@ -51,7 +79,7 @@ const ActiveSession = ({ words }) => {
             )}
           </p>
         ),
-        words
+        state.session.words
       )}
 
       <p className={css.word}>

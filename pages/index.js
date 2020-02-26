@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
 import { useSetState } from "react-hanger";
+
 import GameService from "../services/GameService";
 import ActiveSession from "../components/ActiveSession";
 
@@ -30,25 +31,14 @@ const Home = ({ words, resp }) => {
     return () => {
       clearInterval(metadataInterval);
     };
-  });
+  }, []);
 
   return (
     <div className="container">
       <Head>
         <title>Wheel of Fortune</title>
       </Head>
-      <main>
-        {gameState.meta.sessionActive && (
-          <ActiveSession
-            words={[
-              ["b", undefined, undefined, "n", undefined],
-              [undefined, "o", undefined, undefined],
-              [undefined, undefined, undefined],
-              [undefined, undefined, undefined, undefined, undefined, undefined]
-            ]}
-          />
-        )}
-      </main>
+      <main>{gameState.meta.sessionActive && <ActiveSession />}</main>
     </div>
   );
 };
