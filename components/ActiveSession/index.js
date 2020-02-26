@@ -1,6 +1,10 @@
 import React from "react";
 import css from "./style.css";
 import classNames from "classnames";
+import * as R from "ramda";
+
+const MAX_CHAR_COUNT = 12;
+const CHAR_PADDING = 1;
 
 /* [
      ["b", undefined, undefined, "n", undefined],
@@ -12,70 +16,51 @@ const ActiveSession = ({ words }) => {
   return (
     <article className={css.wrapper}>
       <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        {R.times(
+          R.always(
+            <span className={classNames(css.letter, css.letterPlaceholder)} />
+          ),
+          CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
+        )}
       </p>
+
+      {R.map(
+        word => (
+          <p className={css.word}>
+            <span className={classNames(css.letter, css.letterPlaceholder)} />
+            {R.map(
+              letter => (
+                <span
+                  className={classNames(css.letter, {
+                    [css.letterBlank]: letter === undefined,
+                    [css.letterFilled]: letter !== undefined
+                  })}
+                >
+                  {letter === undefined ? null : letter}
+                </span>
+              ),
+              word
+            )}
+            {R.times(
+              R.always(
+                <span
+                  className={classNames(css.letter, css.letterPlaceholder)}
+                />
+              ),
+              CHAR_PADDING + MAX_CHAR_COUNT - word.length
+            )}
+          </p>
+        ),
+        words
+      )}
+
       <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterFilled)}>B</span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterFilled)}>N</span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-      </p>
-      <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterFilled)}>O</span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-      </p>
-      <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterFilled)}>N</span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-      </p>
-      <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterFilled)}>R</span>
-        <span className={classNames(css.letter, css.letterFilled)}>R</span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterBlank)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-      </p>
-      <p className={css.word}>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
-        <span className={classNames(css.letter, css.letterPlaceholder)}></span>
+        {R.times(
+          R.always(
+            <span className={classNames(css.letter, css.letterPlaceholder)} />
+          ),
+          CHAR_PADDING + MAX_CHAR_COUNT + CHAR_PADDING
+        )}
       </p>
     </article>
   );

@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(9, 70px);
-  gap: 20px;
+  grid-template-columns: repeat(14, 60px);
+  gap: 5px;
 }
 
 .word {
@@ -10,9 +10,9 @@
 
 .letter {
   display: flex;
-  height: 95px;
-  width: 70px;
-  font-size: 50px;
+  height: 85px;
+  width: 60px;
+  font-size: 40px;
 }
 
 .letterBlank,
@@ -20,6 +20,7 @@
   background: lightgray;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 
 .letterPlaceholder {
