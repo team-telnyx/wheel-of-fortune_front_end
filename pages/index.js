@@ -21,11 +21,25 @@ const Home = ({ words, resp }) => {
     meta: {}
   });
 
+  function fetchMetadata() {
+    console.log("fetchMetadata");
+    return GameService.getMetadata().then(response => {
+      setGameState({ meta: response });
+    });
+  }
+
+  function fetchSession() {
+    console.log("fetchSession");
+    return GameService.postSession().then(session => {
+      setGameState({ session });
+    });
+  }
+
   useEffect(() => {
+    fetchMetadata();
+
     const metadataInterval = setInterval(() => {
-      GameService.getMetadata().then(response => {
-        setGameState({ meta: response });
-      });
+      fetchMetadata();
     }, 1000);
 
     return () => {
@@ -33,12 +47,30 @@ const Home = ({ words, resp }) => {
     };
   }, []);
 
+  useEffect(() => {
+    fetchSession();
+
+    const sessionInterval = setInterval(() => {
+      if (sessionActive) {
+        fetchSession();
+      }
+    }, 5000);
+
+    return () => {
+      clearInterval(sessionInterval);
+    };
+  }, [gameState.meta.sessionActive]);
+
   return (
     <div className="container">
       <Head>
         <title>Wheel of Fortune</title>
       </Head>
-      <main>{gameState.meta.sessionActive && <ActiveSession />}</main>
+      <main>
+        {gameState.meta.sessionActive && (
+          <ActiveSession session={gameState.session} meta={gameState.meta} />
+        )}
+      </main>
     </div>
   );
 };
