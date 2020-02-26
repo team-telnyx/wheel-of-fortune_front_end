@@ -7,10 +7,10 @@ const GameService = {
       setTimeout(() => {
         resolve({
           words: [
-            [b, , , , g],
-            [y, , ,],
-            [o, ,],
-            [, , , , , , r]
+            ["b", undefined, undefined, "n", undefined],
+            [undefined, "o", undefined, undefined],
+            [undefined, undefined, undefined],
+            [undefined, undefined, undefined, undefined, undefined, undefined]
           ]
         });
       }, 150);

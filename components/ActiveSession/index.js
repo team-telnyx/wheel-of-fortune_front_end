@@ -1,6 +1,11 @@
 import React from "react";
 
-// {words: [["b", , , "n", ], [, "o", ], [, , ], [, , , , , ]]}
+/* [
+     ["b", undefined, undefined, "n", undefined],
+     [undefined, "o", undefined, undefined],
+     [undefined, undefined, undefined],
+     [undefined, undefined, undefined, undefined, undefined, undefined]
+   ] */
 const ActiveSession = ({ words }) => {
   return <pre>{JSON.stringify(words, null, 2)}</pre>;
 };

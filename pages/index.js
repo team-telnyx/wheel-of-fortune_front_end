@@ -25,10 +25,10 @@ const Home = ({ words, resp }) => {
       <main>
         <ActiveSession
           words={[
-            ["b", , , "n"],
-            [, "o"],
-            [, ,],
-            [, , , , ,]
+            ["b", undefined, undefined, "n", undefined],
+            [undefined, "o", undefined, undefined],
+            [undefined, undefined, undefined],
+            [undefined, undefined, undefined, undefined, undefined, undefined]
           ]}
         />
       </main>
