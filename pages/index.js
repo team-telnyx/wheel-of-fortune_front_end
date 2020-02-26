@@ -51,7 +51,7 @@ const Home = ({ words, resp }) => {
     fetchSession();
 
     const sessionInterval = setInterval(() => {
-      if (sessionActive) {
+      if (gameState.meta.sessionActive) {
         fetchSession();
       }
     }, 5000);
