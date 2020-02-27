@@ -10,7 +10,7 @@ const GameService = {
     ///    ["c", "a", "r", "r", "i", "e", "r"]
     ///  ]
     ///});
-    return axios.post("https://ef3df964.ngrok.io/data/letter").then(
+    return axios.post("http://localhost:3001/data/letter").then(
       response =>
         console.log(response) || {
           words: response.data.phrase
@@ -31,7 +31,7 @@ const GameService = {
     ///  lastWinner: "Winner Alias"
     ///});
     return axios
-      .get("https://ef3df964.ngrok.io/data/meta")
+      .get("http://localhost:3001/data/meta")
       .then(response => response.data);
   }
 };
