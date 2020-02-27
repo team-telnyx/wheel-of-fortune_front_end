@@ -40,7 +40,7 @@ const Home = ({ words, resp }) => {
 
     const metadataInterval = setInterval(() => {
       fetchMetadata();
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearInterval(metadataInterval);
@@ -54,7 +54,7 @@ const Home = ({ words, resp }) => {
       if (gameState.meta.sessionActive) {
         fetchSession();
       }
-    }, 5000);
+    }, 10000);
 
     return () => {
       clearInterval(sessionInterval);
