@@ -1,21 +1,27 @@
 .wrapper {
-  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-family: 'Roboto Mono', sans-serif;
+  height: 100vh;
+  width: 100%;
 }
 
 .textInfoHeading {
-  font-family: 'Bungee', sans-serif;
-  color: rgba(0,0,0,0.7);
+  font-family: 'Roboto Mono', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
 }
 
 .textInfoHeading strong {
-  color: black;
-  text-decoration: underline;
+  background-color: #00957D;
 }
 
 .words {
   display: grid;
-  grid-template-columns: repeat(14, 60px);
-  gap: 5px;
+  grid-template-columns: repeat(14, 70px);
+  gap: 7px;
+  justify-content: center;
 }
 
 .word {
@@ -25,28 +31,61 @@
 .letter {
   display: flex;
   height: 85px;
-  width: 60px;
+  width: 70px;
   font-size: 45px;
   font-weight: 600;
 }
 
 .letterBlank,
 .letterFilled {
+  font-family: 'Roboto Mono', sans-serif;
   background: lightgray;
+  border: 5px solid black;
+  color: black;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
 }
 
+.letterFilled {
+  transform: rotateY(-1080deg);
+  transition: transform 3s;
+}
+
 .letterPlaceholder {
-  background: green;
+  background-color: #00AB85;
+  background-image: url("/telnyx-logo-green.png");
+  background-size: cover;
+}
+
+.winnersWrapper {
+  width: 1093px;
+  margin: 50px auto 0;
 }
 
 .winners {
   display: grid;
   grid-template-rows: auto auto auto;
-  grid-auto-columns: 200px;
+  grid-auto-columns: 250px;
   grid-auto-flow: column;
+  opacity: 0.7;
+
 
   margin: 0;
+}
+
+.winner {
+  animation: winneranimation 1.5s;
+  transform-origin: left;
+}
+
+
+@keyframes winneranimation {
+  from {
+    transform: scale(2.5) translate(0px, -20px);
+  }
+
+  to {
+    transform: scale(1) translate(0px, 0px);
+  }
 }
