@@ -16,7 +16,7 @@ const CHAR_PADDING = 1;
    ] */
 const ActiveSession = ({ session, meta }) => {
   console.log(session);
-  if (!session) {
+  if (!session || !session.words) {
     return <div />;
   }
 
@@ -83,8 +83,8 @@ const ActiveSession = ({ session, meta }) => {
           {meta.winners &&
             R.map(
               winner => (
-                <li key={winner} className={css.winner}>
-                  {winner}
+                <li key={winner.phoneNumber} className={css.winner}>
+                  {winner.phoneNumber}
                 </li>
               ),
               meta.winners
@@ -93,25 +93,6 @@ const ActiveSession = ({ session, meta }) => {
       </section>
     </div>
   );
-};
-
-const renderPuzzle = words => {
-  let resp = [];
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i];
-    let container = [];
-    for (let j = 0; j <= word.length; j++) {
-      if (word[j] === "" || word[j] === undefined) {
-        container.push(<span key={j}> _ </span>);
-      } else {
-        container.push(<span key={j}> {word[j]} </span>);
-      }
-    }
-    resp.push(container);
-    resp.push(<br></br>);
-  }
-
-  return resp;
 };
 
 export default ActiveSession;

@@ -31,7 +31,19 @@ const GameService = {
   /**
    * example response
    * {
-   *   "winners": [],
+   *   winners: [
+   *     "abcxyz",
+   *     "badal",
+   *     "hugo",
+   *     "enzo",
+   *     "gero",
+   *     "vladi",
+   *     "sua",
+   *     "eoghan",
+   *     "tony",
+   *     "steele",
+   *     "bratschi"
+   *   ],
    *   "sessionActive": true,
    *   "leaderboard": [{"blue monkey": 12}],
    *   "roundNumber": 3,
@@ -39,31 +51,24 @@ const GameService = {
    *   "lastWinner": "Winner Alias"
    * }
    */
+  // getMetadata() {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve({
+  //         sessionActive: true,
+  //         leaderboard: [{ "blue monkey": 12 }],
+  //         roundNumber: 3,
+  //         number: "+18004005000",
+  //         lastWinner: "Winner Alias"
+  //       });
+  //     }, 150);
+  //   });
+  // }
+
   getMetadata() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          winners: [
-            "abcxyz",
-            "badal",
-            "hugo",
-            "enzo",
-            "gero",
-            "vladi",
-            "sua",
-            "eoghan",
-            "tony",
-            "steele",
-            "bratschi"
-          ],
-          sessionActive: true,
-          leaderboard: [{ "blue monkey": 12 }],
-          roundNumber: 3,
-          number: "+18004005000",
-          lastWinner: "Winner Alias"
-        });
-      }, 150);
-    });
+    return axios
+      .get("https://ef3df964.ngrok.io/data/meta")
+      .then(response => response.data);
   }
 };
 
