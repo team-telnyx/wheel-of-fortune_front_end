@@ -14,9 +14,9 @@ const CHAR_PADDING = 1;
      [undefined, undefined, undefined],
      [undefined, undefined, undefined, undefined, undefined, undefined]
    ] */
-const ActiveSession = ({ session, meta }) => {
-  console.log(session);
-  if (!session || !session.words) {
+const ActiveGame = ({ game, meta }) => {
+  console.log(game);
+  if (!game || !game.words) {
     return <div />;
   }
 
@@ -65,7 +65,7 @@ const ActiveSession = ({ session, meta }) => {
               )}
             </p>
           ),
-          session.words
+          game.words
         )}
 
         <p className={css.word}>
@@ -95,4 +95,4 @@ const ActiveSession = ({ session, meta }) => {
   );
 };
 
-export default ActiveSession;
+export default ActiveGame;

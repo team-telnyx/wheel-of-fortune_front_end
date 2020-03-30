@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const GameService = {
-  postSession() {
+  postGame() {
     ///return Promise.resolve({
     ///  words: [
     ///    ["b", "-", "-", "n", "g"],
@@ -24,7 +24,7 @@ const GameService = {
     ///    { phoneNumber: "+5513997598554" },
     ///    { phoneNumber: "+5513997598534" }
     ///  ],
-    ///  sessionActive: true,
+    ///  gameActive: true,
     ///  leaderboard: [{ "blue monkey": 12 }],
     ///  roundNumber: 3,
     ///  number: "+18004005000",

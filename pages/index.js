@@ -3,17 +3,17 @@ import React, { useEffect } from "react";
 import { useSetState } from "react-hanger";
 
 import GameService from "../services/GameService";
-import ActiveSession from "../components/ActiveSession";
+import ActiveGame from "../components/ActiveGame";
 
 /**
  * TODO
- * - Poll for the session puzzle
+ * - Poll for the game puzzle
  * - Get the list of winners
  *
  * STATES
- * - No session
+ * - No game
  * - Puzzle
- * - End of session
+ * - End of game
  */
 
 const Home = ({ words, resp }) => {
@@ -29,11 +29,11 @@ const Home = ({ words, resp }) => {
     });
   }
 
-  function fetchSession() {
-    console.log("fetchSession");
-    return GameService.postSession().then(session => {
-      console.log(session);
-      setGameState({ session });
+  function fetchGame() {
+    console.log("fetchGame");
+    return GameService.postGame().then(game => {
+      console.log(game);
+      setGameState({ game });
     });
   }
 
@@ -50,18 +50,18 @@ const Home = ({ words, resp }) => {
   }, []);
 
   useEffect(() => {
-    fetchSession();
+    fetchGame();
 
-    const sessionInterval = setInterval(() => {
-      if (gameState.meta.sessionActive) {
-        fetchSession();
+    const gameInterval = setInterval(() => {
+      if (gameState.meta.gameActive) {
+        fetchGame();
       }
     }, 10000);
 
     return () => {
-      clearInterval(sessionInterval);
+      clearInterval(gameInterval);
     };
-  }, [gameState.meta.sessionActive]);
+  }, [gameState.meta.gameActive]);
 
   return (
     <div className="container">
@@ -80,8 +80,8 @@ const Home = ({ words, resp }) => {
         />
       </Head>
       <main>
-        {gameState.meta.sessionActive && (
-          <ActiveSession session={gameState.session} meta={gameState.meta} />
+        {gameState.meta.gameActive && (
+          <ActiveGame game={gameState.game} meta={gameState.meta} />
         )}
       </main>
     </div>
